@@ -1,0 +1,405 @@
+<title>The Farm-to-Shelf Gap</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a statistical bulletin — one measure column, rules instead of cards, figures numbered as evidence. */
+:root{
+  --paper:#f7f8f9; --surface:#fdfdfe; --ink:#111417; --ink-2:#4b5258; --ink-3:#848b91;
+  --rule:#dde1e4; --rule-strong:#b9c0c6;
+  --accent:#2a78d6; --counter:#eb6834; --third:#1baf7a; --neg:#d03b3b; --mute:#b4bbc1;
+  --font-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Source Sans 3",system-ui,-apple-system,sans-serif;
+  --font-data:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0e1113; --surface:#191d20; --ink:#eef1f3; --ink-2:#bcc3c9; --ink-3:#8a9197;
+  --rule:#2b3135; --rule-strong:#444b51;
+  --accent:#3987e5; --counter:#d95926; --third:#199e70; --neg:#e06a6a; --mute:#5b6268;
+  color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --paper:#0e1113; --surface:#191d20; --ink:#eef1f3; --ink-2:#bcc3c9; --ink-3:#8a9197;
+  --rule:#2b3135; --rule-strong:#444b51;
+  --accent:#3987e5; --counter:#d95926; --third:#199e70; --neg:#e06a6a; --mute:#5b6268;
+  color-scheme:dark;}
+
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);
+  font-size:17px;line-height:1.6;margin:0;-webkit-font-smoothing:antialiased}
+.wrap{max-width:840px;margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0 72px}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0;letter-spacing:-.015em}
+h1{font-size:clamp(2.1rem,6vw,3.3rem);line-height:1.04;font-weight:700}
+h2{font-size:clamp(1.3rem,3.4vw,1.72rem);font-weight:600;line-height:1.2}
+h3{font-size:1.02rem;font-weight:600}
+p{margin:0}
+a{color:var(--accent)}
+.eyebrow{font-family:var(--font-data);font-size:.705rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);font-weight:500}
+header{padding-block:56px 30px;border-bottom:2px solid var(--ink);
+  display:flex;flex-direction:column;gap:18px}
+.standfirst{font-size:1.14rem;color:var(--ink-2);max-width:62ch}
+.meta{font-family:var(--font-data);font-size:.73rem;color:var(--ink-3);
+  display:flex;flex-wrap:wrap;gap:6px 20px;padding-top:4px}
+section{padding-block:40px;border-bottom:1px solid var(--rule);
+  display:flex;flex-direction:column;gap:18px}
+section:last-of-type{border-bottom:none}
+.sec-head{display:flex;flex-direction:column;gap:7px}
+.prose{max-width:66ch;display:flex;flex-direction:column;gap:14px;color:var(--ink-2)}
+.prose strong{color:var(--ink);font-weight:600}
+
+/* answer band */
+.answer{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--accent);
+  padding:20px 22px;display:flex;flex-direction:column;gap:11px;border-radius:2px}
+.answer p{color:var(--ink-2);max-width:64ch}
+.answer .lede{color:var(--ink);font-size:1.06rem;font-weight:600;font-family:var(--font-display)}
+
+/* KPI row */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(152px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:2px;overflow:hidden}
+.kpi{background:var(--surface);padding:15px 16px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.kpi .k-lab{font-family:var(--font-data);font-size:.665rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3)}
+.kpi .k-val{font-family:var(--font-display);font-size:1.74rem;font-weight:700;
+  font-variant-numeric:tabular-nums;line-height:1.1}
+.kpi .k-note{font-size:.79rem;color:var(--ink-3);line-height:1.35}
+.up{color:var(--counter)}.down{color:var(--third)}.flat{color:var(--accent)}
+
+/* figures */
+figure{margin:0;background:var(--surface);border:1px solid var(--rule);border-radius:2px;
+  padding:18px 18px 14px;display:flex;flex-direction:column;gap:12px}
+figcaption{display:flex;flex-direction:column;gap:5px}
+.fig-n{font-family:var(--font-data);font-size:.665rem;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--accent);font-weight:500}
+.fig-t{font-family:var(--font-display);font-size:1.02rem;font-weight:600;color:var(--ink)}
+.fig-s{font-size:.835rem;color:var(--ink-3);line-height:1.45}
+.chart-scroll{overflow-x:auto;overflow-y:hidden;margin-inline:-4px;padding-inline:4px}
+svg{display:block;max-width:100%;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:7px 18px;font-size:.8rem;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.sw{width:11px;height:11px;border-radius:2px;flex:none}
+
+/* table */
+.tbl-scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:2px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.88rem;min-width:430px}
+th,td{text-align:right;padding:9px 13px;border-bottom:1px solid var(--rule);white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal;min-width:150px}
+thead th{font-family:var(--font-data);font-size:.655rem;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--ink-3);font-weight:500;
+  border-bottom:1px solid var(--rule-strong)}
+tbody tr:last-child td{border-bottom:none}
+td.num{font-family:var(--font-data);font-variant-numeric:tabular-nums}
+tr.hi td{background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.pos{color:var(--counter)}.negv{color:var(--third)}
+
+/* tooltip */
+#tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .11s;
+  background:var(--ink);color:var(--paper);font-family:var(--font-data);font-size:.73rem;
+  padding:6px 9px;border-radius:3px;z-index:50;white-space:nowrap;line-height:1.45}
+.hit{cursor:crosshair}
+footer{padding-block:34px;color:var(--ink-3);font-size:.835rem;
+  display:flex;flex-direction:column;gap:11px;max-width:66ch}
+code{font-family:var(--font-data);font-size:.86em;color:var(--ink-2)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Türkiye · price transmission · September–October 2026</div>
+  <h1>The farm-to-shelf gap</h1>
+  <p class="standfirst">Fruit production rose 60.8% this year and vegetables were flat, yet food inflation is still near 28%. Traders are paying farmers less than last year. So who is collecting the difference?</p>
+  <div class="meta">
+    <span>TurkStat · Eurostat · FAOSTAT · World Bank</span>
+    <span>409 CPI categories, 2010–2026</span>
+    <span>Compiled 13 November 2026</span>
+  </div>
+</header>
+
+<section>
+  <div class="answer">
+    <p class="lede">Mostly nobody in the food chain. The gap is a cost shock arriving from outside agriculture — and the farmer is absorbing it.</p>
+    <p>Farm-gate prices rose <strong>12.9%</strong> over the year while farm input prices rose <strong>30.3%</strong>. That is a 13.3% cut in what a farmer's harvest buys. Retail food, at <strong>26.9%</strong>, sits in the middle of the cost ladder — below the minimum wage, below packaging, below rent, below every imported input priced in lira.</p>
+    <p>The bumper fruit harvest <em>did</em> reach consumers: retail fruit fell 1.0% and was the only deflating category in the basket. It just could not offset meat, vegetables, bread and dairy, which together carry six times fruit's weight.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><div class="eyebrow">The setup</div><h2>Four numbers that make the puzzle</h2></div>
+  <div class="kpis">
+    <div class="kpi"><div class="k-lab">Fruit output 2026</div><div class="k-val down">+60.8%</div><div class="k-note">≈31.5 mn tonnes, rebound from the 2025 frost</div></div>
+    <div class="kpi"><div class="k-lab">Vegetable output</div><div class="k-val flat">−0.8%</div><div class="k-note">≈33 mn tonnes, essentially flat</div></div>
+    <div class="kpi"><div class="k-lab">Food CPI, October</div><div class="k-val up">+27.7%</div><div class="k-note">below headline CPI of 29.8%</div></div>
+    <div class="kpi"><div class="k-lab">Farm gate, September</div><div class="k-val">+12.9%</div><div class="k-note">Tarım-ÜFE, the slowest link in the chain</div></div>
+  </div>
+  <div class="prose">
+    <p>Food inflation is no longer leading. Housing and utilities ran at <strong>40.2%</strong> and transport at <strong>36.4%</strong> in October — both well above food. That is the first clue that whatever is driving this is not specific to food.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><div class="eyebrow">Figure 1</div><h2>The farm gate is the slowest-moving price in the economy</h2></div>
+  <figure>
+    <figcaption>
+      <span class="fig-n">Figure 1 · annual % change, September 2026</span>
+      <span class="fig-t">Every link in the food chain, priced on the same basis</span>
+      <span class="fig-s">Farm-gate output prices sit alone at the bottom. Retail food sits in the middle of its own cost stack.</span>
+    </figcaption>
+    <div class="chart-scroll"><svg id="ladder" viewBox="0 0 760 700" role="img" aria-label="Ranked bar chart of annual price change by stage of the food chain. Crude oil in lira is highest at 102.2 percent; farm-gate prices are lowest at 12.9 percent."></svg></div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--accent)"></i>Farm gate (what the grower is paid)</span>
+      <span><i class="sw" style="background:var(--counter)"></i>Retail food (what the shopper pays)</span>
+      <span><i class="sw" style="background:var(--mute)"></i>Everything else in the chain</span>
+    </div>
+  </figure>
+  <div class="prose">
+    <p>Read the distance between the two coloured bars. Everything between them — energy, imported feed and grain, packaging, processing, wages, rent — rose faster than what the farmer received and roughly as fast as what the shopper paid. <strong>The chain is passing through a cost shock, not widening a margin.</strong></p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><div class="eyebrow">Figure 2</div><h2>Where the gap actually opens</h2></div>
+  <figure>
+    <figcaption>
+      <span class="fig-n">Figure 2 · cumulative % change since December 2025</span>
+      <span class="fig-t">Field, factory, shelf</span>
+      <span class="fig-s">Of the 14.2-point gap between farm and shelf, 13.4 points open between the farm gate and the <em>factory</em> gate. Only 0.8 points open between factory and shelf.</span>
+    </figcaption>
+    <div class="chart-scroll"><svg id="chain" viewBox="0 0 760 360" role="img" aria-label="Line chart of cumulative price change through 2026. Retail food reaches 21.2 percent, food manufacturing 20.4 percent, and farm gate only 7.0 percent."></svg></div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--accent)"></i>Farm gate</span>
+      <span><i class="sw" style="background:var(--third)"></i>Food manufacturing</span>
+      <span><i class="sw" style="background:var(--counter)"></i>Retail food</span>
+    </div>
+  </figure>
+  <div class="prose">
+    <p>This is the single most useful thing in the data for your question. If supermarkets were the ones collecting a rent in 2026, the gap would open at the last step. It does not. It opens at the <strong>first handler and processor</strong> stage — which is also where the cost of imported feed, grain, fuel and packaging actually lands.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><div class="eyebrow">Figure 3</div><h2>Fruit is the only thing getting cheaper</h2></div>
+  <figure>
+    <figcaption>
+      <span class="fig-n">Figure 3 · contribution to annual food inflation, percentage points</span>
+      <span class="fig-t">Food inflation decomposed into its sub-groups</span>
+      <span class="fig-s">Each group's share of the food basket multiplied by its own inflation rate. The parts sum to the 28.3% total.</span>
+    </figcaption>
+    <div class="chart-scroll"><svg id="contrib" viewBox="0 0 760 400" role="img" aria-label="Diverging bar chart of contributions to food inflation. Meat contributes 7.12 points, vegetables 5.58, and fruit and nuts minus 0.09 points."></svg></div>
+  </figure>
+  <div class="prose">
+    <p>Had fruit merely tracked the rest of the basket, food inflation would have been <strong>31.3%</strong> rather than 28.3%. The harvest was worth roughly <strong>3 percentage points</strong> of food inflation to Turkish consumers.</p>
+    <p>It could not do more, because <strong>fresh fruit and vegetables are only 23.5% of the food basket</strong>. The other 76.5% is processed food, livestock products and beverages, where the orchard is a minor share of cost and feed, energy, packaging, labour and rent dominate.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><div class="eyebrow">The exceptions</div><h2>Two margins that are genuinely widening</h2></div>
+  <div class="prose">
+    <p>Comparing each stage against the stage before it isolates where a price runs ahead of its own input cost.</p>
+  </div>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>Chain</th><th>Processing</th><th>Retail</th><th>Retail − processing</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td>Meat</td><td class="num">+28.7%</td><td class="num">+37.8%</td><td class="num pos">+9.1 pp</td></tr>
+      <tr class="hi"><td>Dairy &amp; eggs</td><td class="num">+42.5%</td><td class="num">+32.0%</td><td class="num negv">−10.5 pp</td></tr>
+      <tr><td>Non-alcoholic beverages</td><td class="num">+32.7%</td><td class="num">+34.9%</td><td class="num pos">+2.3 pp</td></tr>
+      <tr><td>Oils &amp; fats</td><td class="num">+29.0%</td><td class="num">+27.5%</td><td class="num negv">−1.6 pp</td></tr>
+      <tr><td>Bread &amp; cereals</td><td class="num">+25.5%</td><td class="num">+23.8%</td><td class="num negv">−1.7 pp</td></tr>
+      <tr><td>Vegetables <span style="color:var(--ink-3)">(farm +61.1%)</span></td><td class="num">—</td><td class="num">+39.6%</td><td class="num negv">−21.4 pp vs farm</td></tr>
+    </tbody>
+  </table></div>
+  <div class="prose">
+    <p><strong>Meat at the retail counter</strong> is running 9 points ahead of processor prices. <strong>Dairy at the processing stage</strong>, at 42.5%, is the fastest-rising price anywhere in the domestic food chain — ahead of both raw milk and retail dairy.</p>
+    <p>Both have independent corroboration. Türkiye's Competition Authority fined BİM, CarrefourSA, Migros, A101 and Şok a combined <strong>₺2.6 billion</strong> for Article 4 violations, and has an open investigation covering <strong>50-plus firms and ASÜD</strong> across raw-milk purchasing, dairy-feed sales and packaged dairy — including an interim measure over producers being pushed to buy particular feed, a finding that feed-to-milk parity was not honoured, and that payments to producers were delayed to their disadvantage. The data flagged dairy processing before the regulator's docket was consulted. They agree.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><div class="eyebrow">The long view</div><h2>Is the squeeze a trend, or is 2026 a break?</h2></div>
+  <div class="prose">
+    <p>Seven commodities where both a farm-gate price and a matching retail category exist, 2018 to 2024:</p>
+  </div>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>Commodity</th><th>Farm gate</th><th>Retail</th><th>Margin</th></tr></thead>
+    <tbody>
+      <tr><td>Onions</td><td class="num">+777%</td><td class="num">+794%</td><td class="num">−3.8%</td></tr>
+      <tr><td>Raw cow's milk</td><td class="num">+900%</td><td class="num">+848%</td><td class="num">−5.1%</td></tr>
+      <tr><td>Potatoes</td><td class="num">+793%</td><td class="num">+585%</td><td class="num negv">−23.4%</td></tr>
+      <tr><td>Wheat → flour</td><td class="num">+852%</td><td class="num">+615%</td><td class="num negv">−24.8%</td></tr>
+      <tr><td>Tomatoes</td><td class="num">+1012%</td><td class="num">+525%</td><td class="num negv">−41.2%</td></tr>
+      <tr><td>Apples</td><td class="num">+855%</td><td class="num">+457%</td><td class="num negv">−41.2%</td></tr>
+      <tr><td>Oranges</td><td class="num">+752%</td><td class="num">+373%</td><td class="num negv">−44.0%</td></tr>
+    </tbody>
+  </table></div>
+  <div class="prose">
+    <p>In <strong>every pair</strong>, farm-gate prices rose faster than the matching retail price. Percentage marketing margins narrowed over 2018–2024; they did not widen. Across 2010–2025 the retail-to-farm ratio drifted up only about 25% in total, roughly 1.5% a year, and farmers' real terms of trade actually improved by 9%.</p>
+    <p>So there is no long-running secular squeeze in the aggregate data. <strong>2026 is a break from the pattern, not a continuation of it</strong> — and the break is dominated by one fact: a 60% fruit harvest crashed the farm index in the same year every non-farm cost in the economy rose 25–45%.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><div class="eyebrow">A caveat worth keeping</div><h2>Part of the headline gap is a measurement artefact</h2></div>
+  <div class="prose">
+    <p>Tarım-ÜFE and the food CPI do not measure the same basket. The farm index covers everything Turkish agriculture sells, including cotton, tobacco and exported crops, and it weights fruit heavily — fruit prices collapsed on a record harvest. The food CPI covers what households buy, including imported and heavily processed food, and it weights meat, bread and dairy heavily — all driven by imported feed and energy.</p>
+    <p>The two indices are moving apart partly because they measure different things. That is why the conclusion here rests on the per-commodity pairs and the stage-by-stage comparisons rather than on the headline "farm +12.9% versus retail +26.9%" alone.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><div class="eyebrow">What it adds up to</div><h2>Five findings</h2></div>
+  <div class="prose">
+    <p><strong>1. The farmer's squeeze is real.</strong> Output +12.9%, inputs +30.3%, terms of trade −13.3%.</p>
+    <p><strong>2. It is mostly not a transfer to traders or supermarkets.</strong> Retail food at +26.9% is below the minimum wage, rent, packaging, utilities and every imported input in lira. The gap opens between farm and factory, not factory and shelf.</p>
+    <p><strong>3. The rent, such as it is, is collected upstream and outside agriculture</strong> — by energy, by the exchange rate acting on imported feed and grain, by administered utility prices, by commercial landlords, and by the wage bill.</p>
+    <p><strong>4. Two genuine margin expansions are visible</strong> — meat at retail and dairy at processing. Both are under active competition investigation.</p>
+    <p><strong>5. Your intuition about fruit was right about the price and wrong about the victim.</strong> Traders did pay farmers less, but they passed the lower price on: retail fruit fell 1.0%. The farmer absorbed a normal supply-driven price collapse while their input bill rose 30%. That is the injustice in the data, and it is a terms-of-trade story rather than a margin story.</p>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Sources.</strong> Retail prices and basket weights: Eurostat HICP for Türkiye, ECOICOP-2018, 409 categories, 2010-01 to 2026-09 (republishing TurkStat). Producer prices by NACE branch: Eurostat/TurkStat domestic PPI to 2026-10. Agricultural producer and input price indices (Tarım-ÜFE, Tarım-GFE), CPI headline figures and 2026 crop estimates: TurkStat monthly releases. Farm-gate price levels and production volumes: FAOSTAT. Global energy, fertiliser and grain prices: World Bank Pink Sheet to 2026-10. Exchange rates and minimum wage: Eurostat.</p>
+  <p><strong>Reproducing.</strong> Acquisition and analysis scripts, the tidy data and the full write-up are in the <code>food-prices</code> repository. TurkStat's own API moved behind a login during 2026, so the agricultural indices are transcribed from its monthly releases with the source recorded on every row.</p>
+</footer>
+</div>
+<div id="tip" role="status"></div>
+
+<script>
+const LADDER=[{"label":"Crude oil (Brent), in lira","value":102.2},{"label":"Wheat (world), in lira","value":74.7},{"label":"Soybean meal (feed), in lira","value":47.0},{"label":"Farm energy & lubricants","value":43.1},{"label":"Maize (feed), in lira","value":42.9},{"label":"Dairy processing","value":42.5},{"label":"Housing rents","value":41.3},{"label":"Household electricity & gas","value":41.0},{"label":"Sugar (world), in lira","value":37.9},{"label":"Transport","value":35.0},{"label":"Palm oil, in lira","value":33.9},{"label":"Beverage manufacturing","value":32.7},{"label":"Restaurants & cafés","value":30.8},{"label":"Energy (producer prices)","value":30.8},{"label":"All farm inputs (Tarım-GFE)","value":30.3},{"label":"Plastic packaging","value":29.2},{"label":"Fertiliser & soil improvers","value":28.8},{"label":"Meat processing","value":28.7},{"label":"Statutory minimum wage","value":27.0},{"label":"Retail food","value":26.9,"role":"retail"},{"label":"Paper & board packaging","value":25.9},{"label":"Glass packaging","value":25.5},{"label":"Grain milling","value":25.5},{"label":"Food manufacturing","value":24.9},{"label":"Bakery","value":24.0},{"label":"DAP fertiliser, in lira","value":20.7},{"label":"Lira depreciation vs USD","value":17.7},{"label":"Farm-gate prices (Tarım-ÜFE)","value":12.9,"role":"farm"}];
+const CHAIN={months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep"],
+ farm:[null,null,null,null,null,7.73,10.22,9.2,7.03],
+ mfg:[4.2,8.0,10.5,13.0,14.8,15.8,16.3,18.2,20.4],
+ retail:[7.0,14.8,17.0,21.4,20.6,20.4,22.0,21.8,21.2]};
+const CONTRIB=[{g:"Meat",r:37.8,c:7.12},{g:"Vegetables & pulses",r:39.6,c:5.58},{g:"Cereals & bakery",r:23.8,c:4.33},{g:"Milk, dairy & eggs",r:32.0,c:4.29},{g:"Non-alcoholic beverages",r:34.9,c:3.34},{g:"Oils & fats",r:27.5,c:1.57},{g:"Sugar & confectionery",r:19.3,c:1.20},{g:"Ready-made & other food",r:27.8,c:0.83},{g:"Fish & seafood",r:4.8,c:0.07},{g:"Fruit & nuts",r:-1.0,c:-0.09}];
+
+const NS="http://www.w3.org/2000/svg";
+const tip=document.getElementById("tip");
+function el(n,a){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;}
+function showTip(ev,html){tip.innerHTML=html;tip.style.opacity="1";
+  const r=tip.getBoundingClientRect();
+  let x=ev.clientX+13,y=ev.clientY-r.height-9;
+  if(x+r.width>window.innerWidth-8)x=ev.clientX-r.width-13;
+  if(y<4)y=ev.clientY+16;
+  tip.style.left=x+"px";tip.style.top=y+"px";}
+function hideTip(){tip.style.opacity="0";}
+
+/* ---- Figure 1: ranked bars, emphasis ---- */
+(function(){
+  const s=document.getElementById("ladder"),W=760,L=236,R=58,row=22,top=30;
+  const H=top+LADDER.length*row+26; s.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  const max=110,x=v=>L+(v/max)*(W-L-R);
+  [0,25,50,75,100].forEach(t=>{
+    s.appendChild(el("line",{x1:x(t),y1:top-10,x2:x(t),y2:top+LADDER.length*row,
+      stroke:"var(--rule)","stroke-width":1}));
+    s.appendChild(el("text",{x:x(t),y:top-16,"text-anchor":"middle",
+      "font-family":"var(--font-data)","font-size":10,fill:"var(--ink-3)"})).textContent=t+"%";});
+  LADDER.forEach((d,i)=>{
+    const y=top+i*row, c=d.role==="farm"?"var(--accent)":d.role==="retail"?"var(--counter)":"var(--mute)";
+    const g=el("g",{class:"hit"});
+    g.appendChild(el("rect",{x:x(0),y:y+3.5,width:Math.max(2,x(d.value)-x(0)),height:row-8,
+      rx:3,fill:c}));
+    const lab=el("text",{x:L-10,y:y+row/2+1,"text-anchor":"end","dominant-baseline":"middle",
+      "font-family":"var(--font-body)","font-size":11.5,
+      fill:d.role?"var(--ink)":"var(--ink-2)","font-weight":d.role?"600":"400"});
+    lab.textContent=d.label; g.appendChild(lab);
+    const v=el("text",{x:x(d.value)+7,y:y+row/2+1,"dominant-baseline":"middle",
+      "font-family":"var(--font-data)","font-size":10.5,
+      fill:d.role?"var(--ink)":"var(--ink-3)","font-weight":d.role?"500":"400"});
+    v.textContent="+"+d.value.toFixed(1)+"%"; g.appendChild(v);
+    g.appendChild(el("rect",{x:0,y:y,width:W,height:row,fill:"transparent"}));
+    g.addEventListener("pointermove",e=>showTip(e,`<b>${d.label}</b><br>+${d.value.toFixed(1)}% year on year`));
+    g.addEventListener("pointerleave",hideTip);
+    s.appendChild(g);});
+  s.appendChild(el("line",{x1:x(0),y1:top-10,x2:x(0),y2:top+LADDER.length*row,
+    stroke:"var(--rule-strong)","stroke-width":1}));
+})();
+
+/* ---- Figure 2: cumulative lines ---- */
+(function(){
+  const s=document.getElementById("chain"),W=760,H=360,L=46,R=118,T=22,B=42;
+  const n=CHAIN.months.length,max=24;
+  const x=i=>L+i*(W-L-R)/(n-1), y=v=>H-B-(v/max)*(H-T-B);
+  for(let t=0;t<=24;t+=6){
+    s.appendChild(el("line",{x1:L,y1:y(t),x2:W-R,y2:y(t),stroke:"var(--rule)","stroke-width":1}));
+    s.appendChild(el("text",{x:L-9,y:y(t)+3.5,"text-anchor":"end","font-family":"var(--font-data)",
+      "font-size":10,fill:"var(--ink-3)"})).textContent=t+"%";}
+  CHAIN.months.forEach((m,i)=>{
+    s.appendChild(el("text",{x:x(i),y:H-B+18,"text-anchor":"middle","font-family":"var(--font-data)",
+      "font-size":10,fill:"var(--ink-3)"})).textContent=m;});
+  const series=[["farm","var(--accent)","Farm gate"],["mfg","var(--third)","Food manufacturing"],
+                ["retail","var(--counter)","Retail food"]];
+  const ends=[];
+  series.forEach(([k,c,name])=>{
+    const pts=CHAIN[k].map((v,i)=>v==null?null:[x(i),y(v)]).filter(Boolean);
+    const d=pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join(" ");
+    s.appendChild(el("path",{d,fill:"none",stroke:c,"stroke-width":2,
+      "stroke-linecap":"round","stroke-linejoin":"round"}));
+    const last=pts[pts.length-1];
+    s.appendChild(el("circle",{cx:last[0],cy:last[1],r:4,fill:c,
+      stroke:"var(--surface)","stroke-width":2}));
+    const arr=CHAIN[k];
+    ends.push({x:last[0],y:last[1],ly:last[1],c,name,v:arr[arr.length-1]});});
+  // keep the two-line endpoint labels from colliding: 30px apart, inside the plot
+  ends.sort((a,b)=>a.ly-b.ly);
+  const GAP=30;
+  for(let i=1;i<ends.length;i++)
+    if(ends[i].ly-ends[i-1].ly<GAP) ends[i].ly=ends[i-1].ly+GAP;
+  const over=ends[ends.length-1].ly-(H-B-4);
+  if(over>0) ends.forEach(e=>e.ly-=over);
+  ends.forEach(e=>{
+    if(Math.abs(e.ly-e.y)>3)
+      s.appendChild(el("path",{d:`M${e.x+5} ${e.y} L${e.x+9} ${e.ly-3.5}`,
+        fill:"none",stroke:e.c,"stroke-width":1,opacity:.5}));
+    const t=el("text",{x:e.x+11,y:e.ly,"font-family":"var(--font-data)",
+      "font-size":10.5,fill:e.c,"font-weight":"500"});
+    t.textContent="+"+e.v.toFixed(1)+"%"; s.appendChild(t);
+    const t2=el("text",{x:e.x+11,y:e.ly+12.5,"font-family":"var(--font-body)",
+      "font-size":10,fill:"var(--ink-3)"});
+    t2.textContent=e.name; s.appendChild(t2);});
+  s.appendChild(el("line",{x1:L,y1:y(0),x2:W-R,y2:y(0),stroke:"var(--rule-strong)","stroke-width":1}));
+  CHAIN.months.forEach((m,i)=>{
+    const g=el("g",{class:"hit"});
+    g.appendChild(el("rect",{x:x(i)-((W-L-R)/(n-1))/2,y:T-10,width:(W-L-R)/(n-1),height:H-T-B+10,
+      fill:"transparent"}));
+    g.addEventListener("pointermove",e=>{
+      const f=CHAIN.farm[i],mm=CHAIN.mfg[i],r=CHAIN.retail[i];
+      showTip(e,`<b>${m} 2026</b> &nbsp;<span style="opacity:.7">since Dec-25</span><br>`+
+        `Farm gate &nbsp;${f==null?"n/a":"+"+f.toFixed(1)+"%"}<br>`+
+        `Factory &nbsp;+${mm.toFixed(1)}%<br>Shelf &nbsp;+${r.toFixed(1)}%`);});
+    g.addEventListener("pointerleave",hideTip);
+    s.appendChild(g);});
+})();
+
+/* ---- Figure 3: diverging contributions ---- */
+(function(){
+  const s=document.getElementById("contrib"),W=760,L=176,R=66,row=33,top=34;
+  const H=top+CONTRIB.length*row+16; s.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  const min=-1,max=8,x=v=>L+((v-min)/(max-min))*(W-L-R);
+  [0,2,4,6,8].forEach(t=>{
+    s.appendChild(el("line",{x1:x(t),y1:top-10,x2:x(t),y2:top+CONTRIB.length*row,
+      stroke:"var(--rule)","stroke-width":1}));
+    s.appendChild(el("text",{x:x(t),y:top-16,"text-anchor":"middle","font-family":"var(--font-data)",
+      "font-size":10,fill:"var(--ink-3)"})).textContent=t+" pp";});
+  CONTRIB.forEach((d,i)=>{
+    const y=top+i*row,neg=d.c<0,c=neg?"var(--neg)":"var(--accent)";
+    const x0=x(0),x1=x(d.c),g=el("g",{class:"hit"});
+    g.appendChild(el("rect",{x:Math.min(x0,x1),y:y+5,width:Math.max(2.5,Math.abs(x1-x0)),
+      height:row-16,rx:3,fill:c}));
+    const lab=el("text",{x:L-12,y:y+(row-6)/2,"text-anchor":"end","dominant-baseline":"middle",
+      "font-family":"var(--font-body)","font-size":12,fill:"var(--ink)"});
+    lab.textContent=d.g; g.appendChild(lab);
+    const sub=el("text",{x:L-12,y:y+(row-6)/2+13,"text-anchor":"end",
+      "font-family":"var(--font-data)","font-size":9.5,fill:"var(--ink-3)"});
+    sub.textContent=(d.r>0?"+":"")+d.r.toFixed(1)+"% y/y"; g.appendChild(sub);
+    const v=el("text",{x:neg?Math.min(x0,x1)-7:x1+7,y:y+(row-6)/2,
+      "text-anchor":neg?"end":"start","dominant-baseline":"middle",
+      "font-family":"var(--font-data)","font-size":11,fill:"var(--ink)","font-weight":"500"});
+    v.textContent=(d.c>0?"+":"")+d.c.toFixed(2); g.appendChild(v);
+    g.appendChild(el("rect",{x:0,y:y,width:W,height:row,fill:"transparent"}));
+    g.addEventListener("pointermove",e=>showTip(e,
+      `<b>${d.g}</b><br>price ${d.r>0?"+":""}${d.r.toFixed(1)}% y/y<br>adds ${d.c>0?"+":""}${d.c.toFixed(2)} pp to food inflation`));
+    g.addEventListener("pointerleave",hideTip);
+    s.appendChild(g);});
+  s.appendChild(el("line",{x1:x(0),y1:top-10,x2:x(0),y2:top+CONTRIB.length*row,
+    stroke:"var(--rule-strong)","stroke-width":1.5}));
+})();
+</script>

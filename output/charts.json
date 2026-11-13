@@ -1,0 +1,380 @@
+{
+ "cost_stack": [
+  {
+   "label": "Crude oil (Brent) in TRY",
+   "value": 102.2,
+   "block": "Imported inputs (in lira)"
+  },
+  {
+   "label": "Wheat (world) in TRY",
+   "value": 74.7,
+   "block": "Imported inputs (in lira)"
+  },
+  {
+   "label": "Soybean meal (feed) in TRY",
+   "value": 47.0,
+   "block": "Imported inputs (in lira)"
+  },
+  {
+   "label": "Energy & lubricants",
+   "value": 43.1,
+   "block": "Farm inputs"
+  },
+  {
+   "label": "Maize (feed) in TRY",
+   "value": 42.9,
+   "block": "Imported inputs (in lira)"
+  },
+  {
+   "label": "Dairy processing",
+   "value": 42.5,
+   "block": "Processing & packaging"
+  },
+  {
+   "label": "Actual rents for housing",
+   "value": 41.3,
+   "block": "Downstream prices"
+  },
+  {
+   "label": "Electricity, gas & other fuels",
+   "value": 41.0,
+   "block": "Downstream prices"
+  },
+  {
+   "label": "Sugar (world) in TRY",
+   "value": 37.9,
+   "block": "Imported inputs (in lira)"
+  },
+  {
+   "label": "Transport",
+   "value": 35.0,
+   "block": "Downstream prices"
+  },
+  {
+   "label": "Palm oil in TRY",
+   "value": 33.9,
+   "block": "Imported inputs (in lira)"
+  },
+  {
+   "label": "Beverage manufacturing",
+   "value": 32.7,
+   "block": "Processing & packaging"
+  },
+  {
+   "label": "Restaurants & caf\u00e9s",
+   "value": 30.8,
+   "block": "Downstream prices"
+  },
+  {
+   "label": "Energy (producer prices)",
+   "value": 30.8,
+   "block": "Processing & packaging"
+  },
+  {
+   "label": "All agricultural inputs (Tarim-GFE)",
+   "value": 30.3,
+   "block": "Farm inputs"
+  },
+  {
+   "label": "Plastic packaging",
+   "value": 29.2,
+   "block": "Processing & packaging"
+  },
+  {
+   "label": "Fertiliser & soil improvers",
+   "value": 28.8,
+   "block": "Farm inputs"
+  },
+  {
+   "label": "Meat processing",
+   "value": 28.7,
+   "block": "Processing & packaging"
+  },
+  {
+   "label": "Statutory minimum wage",
+   "value": 27.0,
+   "block": "Macro drivers"
+  },
+  {
+   "label": "Retail food",
+   "value": 26.9,
+   "block": "Downstream prices"
+  },
+  {
+   "label": "Paper & board packaging",
+   "value": 25.9,
+   "block": "Processing & packaging"
+  },
+  {
+   "label": "Glass packaging",
+   "value": 25.5,
+   "block": "Processing & packaging"
+  },
+  {
+   "label": "Grain milling",
+   "value": 25.5,
+   "block": "Processing & packaging"
+  },
+  {
+   "label": "Food manufacturing",
+   "value": 24.9,
+   "block": "Processing & packaging"
+  },
+  {
+   "label": "Bakery",
+   "value": 24.0,
+   "block": "Processing & packaging"
+  },
+  {
+   "label": "DAP fertiliser in TRY",
+   "value": 20.7,
+   "block": "Imported inputs (in lira)"
+  },
+  {
+   "label": "TRY per USD (depreciation)",
+   "value": 17.7,
+   "block": "Macro drivers"
+  },
+  {
+   "label": "Farm-gate prices (Tarim-UFE)",
+   "value": 12.9,
+   "block": "Farm output"
+  }
+ ],
+ "contributions": [
+  {
+   "group": "Meat",
+   "share": 18.9,
+   "rate": 37.8,
+   "contrib": 7.12
+  },
+  {
+   "group": "Vegetables & pulses",
+   "share": 14.1,
+   "rate": 39.6,
+   "contrib": 5.58
+  },
+  {
+   "group": "Cereals & bakery",
+   "share": 18.2,
+   "rate": 23.8,
+   "contrib": 4.33
+  },
+  {
+   "group": "Milk, dairy & eggs",
+   "share": 13.4,
+   "rate": 32.0,
+   "contrib": 4.29
+  },
+  {
+   "group": "Non-alcoholic beverages",
+   "share": 9.6,
+   "rate": 34.9,
+   "contrib": 3.34
+  },
+  {
+   "group": "Oils & fats",
+   "share": 5.7,
+   "rate": 27.5,
+   "contrib": 1.57
+  },
+  {
+   "group": "Sugar & confectionery",
+   "share": 6.2,
+   "rate": 19.3,
+   "contrib": 1.2
+  },
+  {
+   "group": "Ready-made & other food",
+   "share": 3.0,
+   "rate": 27.8,
+   "contrib": 0.83
+  },
+  {
+   "group": "Fish & seafood",
+   "share": 1.5,
+   "rate": 4.8,
+   "contrib": 0.07
+  },
+  {
+   "group": "Fruit & nuts",
+   "share": 9.4,
+   "rate": -1.0,
+   "contrib": -0.09
+  }
+ ],
+ "chain": {
+  "months": [
+   "2026-01",
+   "2026-02",
+   "2026-03",
+   "2026-04",
+   "2026-05",
+   "2026-06",
+   "2026-07",
+   "2026-08",
+   "2026-09"
+  ],
+  "farm": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   7.73,
+   10.22,
+   9.2,
+   7.03
+  ],
+  "mfg": [
+   4.2,
+   8.0,
+   10.5,
+   13.0,
+   14.8,
+   15.8,
+   16.3,
+   18.2,
+   20.4
+  ],
+  "retail": [
+   7.0,
+   14.8,
+   17.0,
+   21.4,
+   20.6,
+   20.4,
+   22.0,
+   21.8,
+   21.2
+  ],
+  "eatout": [
+   6.3,
+   9.8,
+   11.9,
+   15.7,
+   17.3,
+   19.3,
+   21.3,
+   22.8,
+   24.7
+  ]
+ },
+ "fresh": [
+  {
+   "group": "Fruit & nuts",
+   "production": 60.8,
+   "farm": null,
+   "retail": -1.0,
+   "note": "farm-gate perennial crops falling"
+  },
+  {
+   "group": "Vegetables",
+   "production": -0.8,
+   "farm": 61.1,
+   "retail": 39.6,
+   "note": "farm-gate rose faster than the shelf"
+  }
+ ],
+ "longrun": [
+  {
+   "year": 2010,
+   "ratio": 0.807,
+   "tot": 1.138
+  },
+  {
+   "year": 2011,
+   "ratio": 0.819,
+   "tot": 1.119
+  },
+  {
+   "year": 2012,
+   "ratio": 0.857,
+   "tot": 1.067
+  },
+  {
+   "year": 2013,
+   "ratio": 0.952,
+   "tot": 0.977
+  },
+  {
+   "year": 2014,
+   "ratio": 0.969,
+   "tot": 0.997
+  },
+  {
+   "year": 2015,
+   "ratio": 1.0,
+   "tot": 1.0
+  },
+  {
+   "year": 2016,
+   "ratio": 0.997,
+   "tot": 0.979
+  },
+  {
+   "year": 2017,
+   "ratio": 1.025,
+   "tot": 0.963
+  },
+  {
+   "year": 2018,
+   "ratio": 1.058,
+   "tot": 0.948
+  },
+  {
+   "year": 2019,
+   "ratio": 1.041,
+   "tot": 1.003
+  },
+  {
+   "year": 2020,
+   "ratio": 0.998,
+   "tot": 1.061
+  },
+  {
+   "year": 2021,
+   "ratio": 1.017,
+   "tot": 1.086
+  },
+  {
+   "year": 2022,
+   "ratio": 0.895,
+   "tot": 1.331
+  },
+  {
+   "year": 2023,
+   "ratio": 0.863,
+   "tot": 1.488
+  },
+  {
+   "year": 2024,
+   "ratio": 0.953,
+   "tot": 1.336
+  },
+  {
+   "year": 2025,
+   "ratio": 1.013,
+   "tot": 1.237
+  }
+ ],
+ "headline": {
+  "food_yoy": 27.6,
+  "headline_yoy": 29.7,
+  "farm_yoy": 12.9,
+  "farm_input_yoy": 30.3,
+  "food_ytd": 21.8,
+  "farm_ytd": 7.0,
+  "mfg_ytd": 20.4,
+  "eatout_ytd": 24.7,
+  "terms_of_trade": -13.3,
+  "fruit_saving_pp": 3.03,
+  "fresh_share": 23.5,
+  "fruit_production": 60.8,
+  "veg_production": -0.8,
+  "fruit_retail": -1.0,
+  "veg_retail": 39.6,
+  "tuik_food_oct": 27.73,
+  "tuik_headline_oct": 29.77
+ }
+}

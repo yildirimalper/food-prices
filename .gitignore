@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# bulk archives: 46MB, re-downloaded by scripts/fetch_faostat.py
+data/raw/*.zip

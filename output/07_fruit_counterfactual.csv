@@ -1,0 +1,4 @@
+scenario,food_inflation_pct,fruit_rate_pct,note
+Actual (Sep-2026),28.264083427497088,-0.993899751814986,fruit deflating after a +60.8% harvest
+If fruit had tracked the rest of the food basket,31.291454537017348,31.291454537017348,"counterfactual, all other groups unchanged"
+Saving to the consumer,3.02737110952026,,percentage points of food inflation avoided

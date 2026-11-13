@@ -1,0 +1,38 @@
+block,item,yoy_pct,ytd_pct,source
+Farm inputs,All agricultural inputs (Tarim-GFE),30.28,,TurkStat (Aug-26)
+Farm inputs,  Energy & lubricants,43.14,,TurkStat (Aug-26)
+Farm inputs,  Fertiliser & soil improvers,28.79,,TurkStat (Aug-26)
+Farm output,Farm-gate prices (Tarim-UFE),12.93,7.03,TurkStat (Sep-26)
+Processing & packaging,Food manufacturing,24.885192999875883,20.358851674641155,Eurostat/TurkStat PPI
+Processing & packaging,  Meat processing,28.693542797735926,31.783770995978223,Eurostat/TurkStat PPI
+Processing & packaging,  Dairy processing,42.54292606783028,30.167163405468433,Eurostat/TurkStat PPI
+Processing & packaging,  Grain milling,25.51282051282051,19.590777217895884,Eurostat/TurkStat PPI
+Processing & packaging,  Bakery,23.989186647860848,18.96921168377128,Eurostat/TurkStat PPI
+Processing & packaging,Beverage manufacturing,32.65283479418617,32.78542869835628,Eurostat/TurkStat PPI
+Processing & packaging,Plastic packaging,29.17745469030073,25.47881601857227,Eurostat/TurkStat PPI
+Processing & packaging,Paper & board packaging,25.894378194207857,21.30220682108337,Eurostat/TurkStat PPI
+Processing & packaging,Glass packaging,25.535540408958134,21.541362243695517,Eurostat/TurkStat PPI
+Processing & packaging,Energy (producer prices),30.819931452675988,37.29939125622579,Eurostat/TurkStat PPI
+Processing & packaging,All manufacturing,29.096552850841363,23.991840577436086,Eurostat/TurkStat PPI
+Downstream prices,Retail food,26.887778339291614,21.212139272644915,Eurostat/TurkStat HICP
+Downstream prices,Restaurants & cafés,30.832549021646983,24.74491566599568,Eurostat/TurkStat HICP
+Downstream prices,Actual rents for housing,41.34087930694563,30.77030376514265,Eurostat/TurkStat HICP
+Downstream prices,Transport,34.9995104963567,32.72557269752221,Eurostat/TurkStat HICP
+Downstream prices,"Electricity, gas & other fuels",40.9912461124194,36.68590033811447,Eurostat/TurkStat HICP
+Downstream prices,Headline CPI,29.730315509180414,24.31369931091776,Eurostat/TurkStat HICP
+Imported inputs (USD),Maize (feed),21.377912867274574,16.480311132717553,World Bank Pink Sheet
+Imported inputs (in lira),Maize (feed) in TRY,42.87691263454554,32.79520217854377,Pink Sheet x TRY/USD
+Imported inputs (USD),Soybean meal (feed),24.860335195530723,12.030075187969924,World Bank Pink Sheet
+Imported inputs (in lira),Soybean meal (feed) in TRY,46.976157208761606,27.72164102234429,Pink Sheet x TRY/USD
+Imported inputs (USD),Wheat (world),48.41745081266038,42.91598023064249,World Bank Pink Sheet
+Imported inputs (in lira),Wheat (world) in TRY,74.70581469291156,62.93360057777304,Pink Sheet x TRY/USD
+Imported inputs (USD),DAP fertiliser,2.5621316935690475,27.585657370517925,World Bank Pink Sheet
+Imported inputs (in lira),DAP fertiliser in TRY,20.7283959942411,45.45602600851375,Pink Sheet x TRY/USD
+Imported inputs (USD),Crude oil (Brent),71.76470588235293,86.28389154704944,World Bank Pink Sheet
+Imported inputs (in lira),Crude oil (Brent) in TRY,102.18844018917098,112.37586678842524,Pink Sheet x TRY/USD
+Imported inputs (USD),Palm oil,13.789778206364511,20.408163265306122,World Bank Pink Sheet
+Imported inputs (in lira),Palm oil in TRY,33.9447335634526,37.2732114918964,Pink Sheet x TRY/USD
+Imported inputs (USD),Sugar (world),17.14285714285715,28.125,World Bank Pink Sheet
+Imported inputs (in lira),Sugar (world) in TRY,37.891724864825996,46.07091201653593,Pink Sheet x TRY/USD
+Macro drivers,TRY per USD (depreciation),17.71244805533927,14.006565476320754,Eurostat FX
+Macro drivers,Statutory minimum wage,27.009151734215187,27.009151734215187,Eurostat (bi-annual)
